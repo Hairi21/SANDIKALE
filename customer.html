@@ -1,1 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer - SANDIKALE PROJECT</title>
+<link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+<div class="container">
+
+<h1>Data Customer</h1>
+
+<div class="card">
+
+<label>Nama Customer</label>
+<input type="text" id="namaCustomer">
+
+<label>No. HP</label>
+<input type="text" id="hpCustomer">
+
+<label>Alamat</label>
+<input type="text" id="alamatCustomer">
+
+<button onclick="tambahCustomer()">
+Tambah Customer
+</button>
+
+</div>
+
+<div class="card">
+
+<table>
+
+<thead>
+<tr>
+<th>Nama</th>
+<th>No HP</th>
+<th>Alamat</th>
+<th>Hapus</th>
+</tr>
+</thead>
+
+<tbody id="listCustomer">
+
+</tbody>
+
+</table>
+
+</div>
+
+<a href="dashboard.html">
+<button>Kembali ke Dashboard</button>
+</a>
+
+</div>
+
+<script src="customer.js"></script>
+
+</body>
+</html>
