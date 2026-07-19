@@ -1,1 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pengaturan Diskon</title>
 
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f5f6fa;
+padding:30px;
+}
+
+.box{
+max-width:500px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+input,button{
+width:100%;
+padding:12px;
+margin-top:15px;
+font-size:16px;
+}
+
+button{
+background:#2563eb;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+h2{
+text-align:center;
+}
+
+p{
+text-align:center;
+color:green;
+font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>Pengaturan Diskon</h2>
+
+<label>Diskon (%)</label>
+
+<input
+type="number"
+id="diskon"
+placeholder="Contoh : 10">
+
+<button onclick="simpanDiskon()">
+
+Simpan Diskon
+
+</button>
+
+<p id="status"></p>
+
+</div>
+
+<script>
+
+const lama=localStorage.getItem("diskon");
+
+if(lama){
+
+document.getElementById("diskon").value=lama;
+
+}
+
+function simpanDiskon(){
+
+const nilai=document.getElementById("diskon").value;
+
+localStorage.setItem("diskon",nilai);
+
+document.getElementById("status").innerHTML="✅ Diskon berhasil disimpan";
+
+}
+
+</script>
+
+</body>
+</html>
