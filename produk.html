@@ -3,71 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Produk - SANDIKALE POS</title>
-
+<title>Data Produk</title>
 <link rel="stylesheet" href="style.css">
-
-<style>
-body{
-    font-family:Arial,sans-serif;
-    background:#f4f6fb;
-    margin:0;
-    padding:20px;
-}
-
-.container{
-    max-width:900px;
-    margin:auto;
-}
-
-.card{
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    margin-bottom:20px;
-}
-
-input,select{
-    width:100%;
-    padding:10px;
-    margin:8px 0;
-}
-
-button{
-    padding:10px 15px;
-    background:#2196F3;
-    color:white;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-table th,table td{
-    border:1px solid #ddd;
-    padding:10px;
-    text-align:center;
-}
-</style>
-
 </head>
+
 <body>
 
 <div class="container">
 
+<h1>Data Produk</h1>
+
 <div class="card">
 
-<h2>Data Produk</h2>
+<label>Nama Produk</label>
+<input type="text" id="namaProduk">
 
-<input type="text" id="nama" placeholder="Nama Produk">
+<label>Kategori</label>
+<input type="text" id="kategoriProduk">
 
-<input type="number" id="harga" placeholder="Harga">
+<label>Harga Jual</label>
+<input type="number" id="hargaProduk">
 
-<button onclick="simpanProduk()">Simpan Produk</button>
+<button onclick="tambahDataProduk()">
+Tambah Produk
+</button>
 
 </div>
 
@@ -78,18 +37,15 @@ table th,table td{
 <thead>
 
 <tr>
-
 <th>Nama</th>
-
+<th>Kategori</th>
 <th>Harga</th>
-
-<th>Aksi</th>
-
+<th>Hapus</th>
 </tr>
 
 </thead>
 
-<tbody id="dataProduk">
+<tbody id="listProduk">
 
 </tbody>
 
@@ -97,109 +53,13 @@ table th,table td{
 
 </div>
 
+<a href="index.html">
+<button>Kembali</button>
+</a>
+
 </div>
 
-<script>
-
-let produk=JSON.parse(localStorage.getItem("produk"))||[];
-
-function tampilProduk(){
-
-let html="";
-
-produk.forEach((p,i)=>{
-
-html+=`
-
-<tr>
-
-<td>${p.nama}</td>
-
-<td>Rp ${Number(p.harga).toLocaleString()}</td>
-
-<td>
-
-<button onclick="editProduk(${i})">Edit</button>
-
-<button onclick="hapusProduk(${i})">Hapus</button>
-
-</td>
-
-</tr>
-
-`;
-
-});
-
-document.getElementById("dataProduk").innerHTML=html;
-
-}
-
-function simpanProduk(){
-
-let nama=document.getElementById("nama").value;
-
-let harga=document.getElementById("harga").value;
-
-if(nama==""||harga==""){
-
-alert("Lengkapi data");
-
-return;
-
-}
-
-produk.push({
-
-nama:nama,
-
-harga:harga
-
-});
-
-localStorage.setItem("produk",JSON.stringify(produk));
-
-document.getElementById("nama").value="";
-
-document.getElementById("harga").value="";
-
-tampilProduk();
-
-}
-
-function hapusProduk(i){
-
-produk.splice(i,1);
-
-localStorage.setItem("produk",JSON.stringify(produk));
-
-tampilProduk();
-
-}
-
-function editProduk(i){
-
-let nama=prompt("Nama Produk",produk[i].nama);
-
-let harga=prompt("Harga",produk[i].harga);
-
-if(nama!=null){
-
-produk[i].nama=nama;
-
-produk[i].harga=harga;
-
-localStorage.setItem("produk",JSON.stringify(produk));
-
-tampilProduk();
-
-}
-
-}
-
-tampilProduk();
-
-</script>
+<script src="app.js"></script>
 
 </body>
 </html>
