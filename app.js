@@ -222,6 +222,11 @@ function tampilKeranjang(){
             <td>${rupiah(item.harga)}</td>
             <td>${rupiah(item.subtotal)}</td>
         </tr>
+            });
+
+    totalBelanja.innerHTML = "Total : " + rupiah(total);
+
+}
        // ======================
 // UTILITAS
 // ======================
@@ -415,119 +420,3 @@ function hapusCustomer(index) {
 }
 
 tampilCustomer();
-// ======================
-// KASIR
-// ======================
-
-let keranjang = [];
-
-function loadProdukKasir(){
-
-    let select = document.getElementById("produk");
-
-    if(!select) return;
-
-    let data = JSON.parse(localStorage.getItem("produk")) || [];
-
-    select.innerHTML = '<option value="">Pilih Produk</option>';
-
-    data.forEach((item,index)=>{
-
-        select.innerHTML += `
-        <option value="${index}">
-        ${item.nama} - Rp ${Number(item.harga).toLocaleString("id-ID")}
-        </option>`;
-
-    });
-
-}
-
-loadProdukKasir();
-
-function tambahProduk(){
-
-    let index = document.getElementById("produk").value;
-
-    if(index==""){
-        alert("Pilih produk.");
-        return;
-    }
-
-    let data = JSON.parse(localStorage.getItem("produk")) || [];
-
-    let produk = data[index];
-
-    let qty = Number(document.getElementById("qty").value);
-
-    let diskon = Number(document.getElementById("diskon").value);
-
-    let subtotal = produk.harga * qty;
-
-    subtotal = subtotal - (subtotal * diskon / 100);
-
-    keranjang.push({
-
-        nama:produk.nama,
-        qty:qty,
-        harga:Number(produk.harga),
-        subtotal:subtotal
-
-    });
-
-    tampilKeranjang();
-
-}
-
-function tampilKeranjang(){
-
-    let tbody = document.getElementById("keranjang");
-
-    tbody.innerHTML="";
-
-    let total=0;
-
-    keranjang.forEach(item=>{
-
-        total += item.subtotal;
-
-        tbody.innerHTML += `
-        <tr>
-        <td>${item.nama}</td>
-        <td>${item.qty}</td>
-        <td>Rp ${item.harga.toLocaleString("id-ID")}</td>
-        <td>Rp ${item.subtotal.toLocaleString("id-ID")}</td>
-        </tr>`;
-
-    });
-
-    document.getElementById("total").innerHTML =
-    "Total : Rp " + total.toLocaleString("id-ID");
-
-}
-
-function simpanTransaksi(){
-
-    if(keranjang.length==0){
-        alert("Belum ada transaksi.");
-        return;
-    }
-
-    let laporan = JSON.parse(localStorage.getItem("laporan")) || [];
-
-    laporan.push({
-
-        tanggal:new Date().toLocaleString("id-ID"),
-        total:keranjang.reduce((a,b)=>a+b.subtotal,0),
-        item:keranjang
-
-    });
-
-    localStorage.setItem("laporan",JSON.stringify(laporan));
-
-    alert("Transaksi berhasil disimpan.");
-
-    keranjang=[];
-
-    tampilKeranjang();
-
-                               }
