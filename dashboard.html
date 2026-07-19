@@ -3,162 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard - POS System</title>
-
+<title>Dashboard - SANDIKALE PROJECT</title>
 <link rel="stylesheet" href="style.css">
-
-<style>
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#f5f7fb;
-}
-
-.sidebar{
-position:fixed;
-left:0;
-top:0;
-width:240px;
-height:100%;
-background:#111827;
-color:white;
-padding:20px;
-}
-
-.sidebar h2{
-margin-bottom:30px;
-}
-
-.sidebar a{
-display:block;
-color:#ddd;
-padding:12px;
-margin:6px 0;
-text-decoration:none;
-border-radius:8px;
-}
-
-.sidebar a:hover,
-.sidebar a.active{
-background:#2563eb;
-color:white;
-}
-
-.main{
-margin-left:260px;
-padding:30px;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-}
-
-.card{
-background:white;
-padding:20px;
-border-radius:12px;
-box-shadow:0 5px 15px rgba(0,0,0,.1);
-}
-
-.card h3{
-margin:0;
-color:#555;
-}
-
-.card h1{
-margin-top:15px;
-color:#2563eb;
-}
-
-table{
-width:100%;
-margin-top:30px;
-border-collapse:collapse;
-background:white;
-}
-
-th,td{
-padding:14px;
-border-bottom:1px solid #ddd;
-text-align:left;
-}
-
-th{
-background:#2563eb;
-color:white;
-}
-</style>
 </head>
 
 <body>
 
-<div class="sidebar">
+<div class="container">
 
-<h2>POS System</h2>
-
-<a class="active" href="dashboard.html">Dashboard</a>
-
-<a href="kasir.html">Kasir</a>
-
-<a href="produk.html">Produk</a>
-
-<a href="kategori.html">Kategori</a>
-
-<a href="customer.html">Customer</a>
-
-<a href="diskon.html">Diskon</a>
-
-<a href="laporan.html">Laporan</a>
-
-</div>
-
-<div class="main">
-
-<h1>Dashboard</h1>
-
-<div class="cards">
+<h1>SANDIKALE PROJECT</h1>
 
 <div class="card">
-<h3>Total Penjualan</h3>
-<h1>Rp0</h1>
+
+<h2>Dashboard</h2>
+
+<p>Selamat datang di Dashboard SANDIKALE PROJECT.</p>
+
 </div>
 
 <div class="card">
-<h3>Total Produk</h3>
-<h1>0</h1>
+
+<h3>Statistik</h3>
+
+<p><strong>Total Produk :</strong> <span id="totalProduk">0</span></p>
+
+<p><strong>Total Customer :</strong> <span id="totalCustomer">0</span></p>
+
+<p><strong>Total Transaksi :</strong> <span id="totalTransaksi">0</span></p>
+
+<p><strong>Total Penjualan :</strong> <span id="totalPenjualan">Rp 0</span></p>
+
 </div>
 
 <div class="card">
-<h3>Total Customer</h3>
-<h1>0</h1>
-</div>
 
-<div class="card">
-<h3>Total Diskon</h3>
-<h1>0</h1>
-</div>
+<h3>Menu Cepat</h3>
 
-</div>
+<a href="produk.html">
+<button>Produk</button>
+</a>
 
-<table>
+<a href="kasir.html">
+<button>Kasir</button>
+</a>
 
-<tr>
-<th>Tanggal</th>
-<th>Transaksi</th>
-<th>Total</th>
-</tr>
+<a href="customer.html">
+<button>Customer</button>
+</a>
 
-<tr>
-<td>-</td>
-<td>Belum ada</td>
-<td>Rp0</td>
-</tr>
+<a href="laporan.html">
+<button>Laporan</button>
+</a>
 
-</table>
+<a href="index.html">
+<button>Kembali ke Menu Utama</button>
+</a>
 
 </div>
+
+<script src="app.js"></script>
 
 </body>
 </html>
