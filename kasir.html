@@ -117,7 +117,28 @@ Tambah Produk
 <tbody id="keranjang">
 
 </tbody>
+  
+<div class="card">
+    <h3>Diskon</h3>
 
+    <label>Jenis Diskon</label><br>
+    <select id="jenisDiskon">
+        <option value="0">Tidak Ada</option>
+        <option value="persen">Persen (%)</option>
+        <option value="nominal">Nominal (Rp)</option>
+    </select>
+
+    <br><br>
+
+    <label>Nilai Diskon</label><br>
+    <input type="number" id="nilaiDiskon" value="0">
+
+    <br><br>
+
+    <button onclick="hitungTotal()">
+        Terapkan Diskon
+    </button>
+</div>
 </table>
 
 <div class="total">
