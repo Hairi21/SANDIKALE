@@ -1,1 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Kasir - POS System</title>
+<link rel="stylesheet" href="style.css">
 
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f4f6fb;
+margin:0;
+padding:20px;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+}
+
+.card{
+background:#fff;
+padding:20px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+margin-bottom:20px;
+}
+
+select,input,button{
+width:100%;
+padding:12px;
+margin:10px 0;
+font-size:16px;
+}
+
+button{
+background:#2563eb;
+color:#fff;
+border:none;
+cursor:pointer;
+border-radius:8px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+th,td{
+padding:12px;
+border-bottom:1px solid #ddd;
+text-align:left;
+}
+
+th{
+background:#2563eb;
+color:#fff;
+}
+
+.total{
+font-size:24px;
+font-weight:bold;
+margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Mesin Kasir</h1>
+
+<div class="card">
+
+<select id="produk">
+<option value="5000">Air Mineral - Rp5.000</option>
+<option value="10000">Mie Instan - Rp10.000</option>
+<option value="15000">Roti - Rp15.000</option>
+<option value="20000">Kopi - Rp20.000</option>
+</select>
+
+<input
+type="number"
+id="jumlah"
+value="1"
+min="1">
+
+<button onclick="tambahProduk()">
+Tambah Produk
+</button>
+
+</div>
+
+<div class="card">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Produk</th>
+
+<th>Qty</th>
+
+<th>Harga</th>
+
+<th>Total</th>
+
+</tr>
+
+</thead>
+
+<tbody id="keranjang">
+
+</tbody>
+
+</table>
+
+<div class="total">
