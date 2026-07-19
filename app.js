@@ -293,3 +293,49 @@ tampilProduk();
 loadProdukKasir();
 
 tampilKeranjang();
+// ======================
+// DASHBOARD
+// ======================
+
+function loadDashboard(){
+
+    const totalProduk = document.getElementById("totalProduk");
+    const totalCustomer = document.getElementById("totalCustomer");
+    const totalTransaksi = document.getElementById("totalTransaksi");
+    const totalPenjualan = document.getElementById("totalPenjualan");
+
+    if(!totalProduk) return;
+
+    // Produk
+    let produk =
+    JSON.parse(localStorage.getItem("produk")) || [];
+
+    totalProduk.innerHTML = produk.length;
+
+    // Customer
+    let customer =
+    JSON.parse(localStorage.getItem("customer")) || [];
+
+    totalCustomer.innerHTML = customer.length;
+
+    // Transaksi
+    let transaksi =
+    JSON.parse(localStorage.getItem("transaksi")) || [];
+
+    totalTransaksi.innerHTML = transaksi.length;
+
+    // Penjualan
+    let total = 0;
+
+    transaksi.forEach(item=>{
+
+        total += Number(item.total);
+
+    });
+
+    totalPenjualan.innerHTML =
+    "Rp " + total.toLocaleString("id-ID");
+
+}
+
+loadDashboard();
