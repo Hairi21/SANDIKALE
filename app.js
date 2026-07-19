@@ -110,7 +110,8 @@ function tambahDataProduk(){
     simpanProduk();
 
     tampilProduk();
-
+    
+loadProdukKasir();
     document.getElementById("namaProduk").value="";
     document.getElementById("kategoriProduk").value="";
     document.getElementById("hargaProduk").value="";
