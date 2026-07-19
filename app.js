@@ -1,37 +1,94 @@
-let total = 0;
+let daftarProduk = JSON.parse(localStorage.getItem("produk")) || [];
 
-function formatRupiah(angka){
-    return "Rp " + angka.toLocaleString("id-ID");
+let keranjang = [];
+
+const selectProduk = document.getElementById("produk");
+
+function loadProduk(){
+
+    selectProduk.innerHTML =
+    '<option value="">Pilih Produk</option>';
+
+    daftarProduk.forEach((item,index)=>{
+
+        selectProduk.innerHTML +=
+        `<option value="${index}">
+        ${item.nama} - Rp ${Number(item.harga).toLocaleString('id-ID')}
+        </option>`;
+
+    });
+
 }
+
+loadProduk();
 
 function tambahProduk(){
 
-    const produk = document.getElementById("produk");
-    const qty = document.getElementById("qty");
-    const diskon = document.getElementById("diskon");
+    let index = selectProduk.value;
 
-    const namaProduk = produk.options[produk.selectedIndex].text;
-    const harga = Number(produk.value);
-    const jumlah = Number(qty.value);
-    const potongan = Number(diskon.value);
+    if(index===""){
 
-    let subtotal = harga * jumlah;
+        alert("Pilih produk");
 
-    subtotal = subtotal - (subtotal * potongan / 100);
+        return;
 
-    total += subtotal;
+    }
 
-    const tbody = document.getElementById("keranjang");
+    let qty = parseInt(document.getElementById("qty").value);
 
-    tbody.innerHTML += `
-    <tr>
-        <td>${namaProduk}</td>
-        <td>${jumlah}</td>
-        <td>${formatRupiah(harga)}</td>
-        <td>${formatRupiah(subtotal)}</td>
-    </tr>
-    `;
+    let diskon = parseInt(document.getElementById("diskon").value);
+
+    let produk = daftarProduk[index];
+
+    let subtotal = produk.harga * qty;
+
+    subtotal = subtotal - (subtotal*diskon/100);
+
+    keranjang.push({
+
+        nama:produk.nama,
+
+        qty:qty,
+
+        harga:produk.harga,
+
+        subtotal:subtotal
+
+    });
+
+    tampilKeranjang();
+
+}
+
+function tampilKeranjang(){
+
+    let tbody = document.getElementById("keranjang");
+
+    tbody.innerHTML="";
+
+    let total=0;
+
+    keranjang.forEach(item=>{
+
+        total+=item.subtotal;
+
+        tbody.innerHTML +=
+
+        `<tr>
+
+        <td>${item.nama}</td>
+
+        <td>${item.qty}</td>
+
+        <td>Rp ${Number(item.harga).toLocaleString('id-ID')}</td>
+
+        <td>Rp ${Number(item.subtotal).toLocaleString('id-ID')}</td>
+
+        </tr>`;
+
+    });
 
     document.getElementById("total").innerHTML =
-        "Total : " + formatRupiah(total);
+    "Total : Rp "+total.toLocaleString('id-ID');
+
 }
