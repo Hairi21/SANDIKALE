@@ -203,12 +203,11 @@ function tambahProduk(){
     document.getElementById("diskon").value = 0;
 
 }
-
 function tampilKeranjang(){
 
     if(!tabelKeranjang) return;
 
-    tabelKeranjang.innerHTML="";
+    tabelKeranjang.innerHTML = "";
 
     let total = 0;
 
@@ -223,9 +222,15 @@ function tampilKeranjang(){
             <td>${rupiah(item.harga)}</td>
             <td>${rupiah(item.subtotal)}</td>
         </tr>
-            });
+        `;
 
-    totalBelanja.innerHTML = "Total : " + rupiah(total);
+    });
+
+    if(totalBelanja){
+        totalBelanja.innerHTML = "Total : " + rupiah(total);
+    }
+
+}
 
 }
        // ======================
