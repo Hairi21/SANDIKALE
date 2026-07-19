@@ -80,16 +80,11 @@ function tampilProduk(){
 
 function tambahDataProduk(){
 
-    const nama =
-    document.getElementById("namaProduk").value.trim();
+    const nama = document.getElementById("namaProduk").value.trim();
+    const kategori = document.getElementById("kategoriProduk").value.trim();
+    const harga = Number(document.getElementById("hargaProduk").value);
 
-    const kategori =
-    document.getElementById("kategoriProduk").value.trim();
-
-    const harga =
-    document.getElementById("hargaProduk").value;
-
-    if(nama==="" || kategori==="" || harga===""){
+    if(nama==="" || kategori==="" || harga<=0){
 
         alert("Lengkapi data produk.");
 
@@ -98,20 +93,20 @@ function tambahDataProduk(){
     }
 
     daftarProduk.push({
-
         nama:nama,
-
         kategori:kategori,
-
-        harga:Number(harga)
-
+        harga:harga
     });
 
-    simpanProduk();
+    localStorage.setItem(
+        "produk",
+        JSON.stringify(daftarProduk)
+    );
 
     tampilProduk();
-    
-loadProdukKasir();
+
+    loadProdukKasir();
+
     document.getElementById("namaProduk").value="";
     document.getElementById("kategoriProduk").value="";
     document.getElementById("hargaProduk").value="";
@@ -426,3 +421,12 @@ function hapusCustomer(index) {
 }
 
 tampilCustomer();
+window.onload = function(){
+
+    tampilProduk();
+
+    loadProdukKasir();
+
+    tampilCustomer();
+
+};
