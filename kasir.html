@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kasir SANDIKALE</title>
-
+<title>Kasir - SANDIKALE PROJECT</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,31 +11,26 @@
 
 <div class="container">
 
-<h1>Kasir SANDIKALE</h1>
+<h1>Kasir</h1>
 
 <div class="card">
 
 <label>Produk</label>
-
-<select id="produk">
-<option value="">Pilih Produk</option>
-</select>
+<select id="produk"></select>
 
 <label>Jumlah</label>
-
 <input type="number" id="qty" value="1" min="1">
 
-<label>Diskon</label>
-
+<label>Diskon (%)</label>
 <select id="diskon">
-<option value="0">Tidak Ada</option>
+<option value="0">0%</option>
 <option value="5">5%</option>
 <option value="10">10%</option>
 <option value="20">20%</option>
 </select>
 
 <button onclick="tambahProduk()">
-Tambah Produk
+Tambah ke Keranjang
 </button>
 
 </div>
@@ -46,54 +40,32 @@ Tambah Produk
 <table>
 
 <thead>
-
 <tr>
-
 <th>Produk</th>
-
 <th>Qty</th>
-
 <th>Harga</th>
-
 <th>Subtotal</th>
-
 </tr>
-
 </thead>
 
 <tbody id="keranjang">
-
 </tbody>
 
 </table>
 
 <h2 id="total">
-Total : Rp0
+Total : Rp 0
 </h2>
-<hr>
-
-<button onclick="kosongkanKeranjang()">
-Kosongkan Keranjang
-</button>
 
 <button onclick="simpanTransaksi()">
 Simpan Transaksi
 </button>
 
-<br><br>
-
-<a href="produk.html">
-<button>
-Kelola Produk
-</button>
-</a>
-
-<a href="index.html">
-<button>
-Menu Utama
-</button>
-</a>
 </div>
+
+<a href="dashboard.html">
+<button>Kembali ke Dashboard</button>
+</a>
 
 </div>
 
